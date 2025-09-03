@@ -12,7 +12,7 @@ Este projeto é um aplicativo de **agenda desenvolvido em Flutter**, permitindo 
 - 📝 **CRUD completo** (criar, ler, atualizar e deletar eventos).  
 - ⚡ **Interface responsiva** com animações suaves e visual moderno.  
 - 💾 **Banco de dados local SQLite** para persistência dos eventos.
-- 🔔 Notificações locais que lembram o usuário sobre seus eventos, funcionando com o app aberto, em segundo plano ou fechado, garantindo que nenhum compromisso seja perdido.  
+- 🔔 **Notificações locais que lembram o usuário sobre seus eventos**, funcionando com o app aberto, em segundo plano ou fechado, garantindo que nenhum compromisso seja perdido.  
 
 ---
 
