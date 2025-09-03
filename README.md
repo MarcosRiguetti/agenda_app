@@ -20,7 +20,7 @@ Este projeto é um aplicativo de **agenda desenvolvido em Flutter**, permitindo 
 
 Você pode baixar a versão mais recente do aplicativo aqui:  
 
-[⬇️ **Baixar APK**][((https://github.com/MarcosRiguetti/agenda_app/releases/latest/download/agenda_app.apk)](https://github.com/MarcosRiguetti/agenda_app/releases/download/v1.0.0/app-release.apk))
+[⬇️ **Baixar APK**](https://github.com/MarcosRiguetti/agenda_app/releases/latest/download/agenda_app.apk)
 
 ---
 
