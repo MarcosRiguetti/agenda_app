@@ -11,7 +11,8 @@ Este projeto é um aplicativo de **agenda desenvolvido em Flutter**, permitindo 
 - 🌙 **Modo claro e escuro**, alternável pelo usuário.  
 - 📝 **CRUD completo** (criar, ler, atualizar e deletar eventos).  
 - ⚡ **Interface responsiva** com animações suaves e visual moderno.  
-- 💾 **Banco de dados local SQLite** para persistência dos eventos.  
+- 💾 **Banco de dados local SQLite** para persistência dos eventos.
+- 🔔 Notificações locais que lembram o usuário sobre seus eventos, funcionando com o app aberto, em segundo plano ou fechado, garantindo que nenhum compromisso seja perdido.  
 
 ---
 
@@ -28,7 +29,8 @@ Você pode baixar a versão mais recente do aplicativo aqui:
 - [Flutter](https://flutter.dev/)  
 - [Dart](https://dart.dev/)  
 - [Sqflite](https://pub.dev/packages/sqflite) (SQLite)  
-- [Table Calendar](https://pub.dev/packages/table_calendar)  
+- [Table Calendar](https://pub.dev/packages/table_calendar) 
+- [Awesome Notifications](https://pub.dev/packages/awesome_notifications?utm_source=chatgpt.com)  
 
 ---
 
