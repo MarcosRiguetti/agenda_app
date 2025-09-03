@@ -14,4 +14,6 @@ Interface responsiva com animações suaves e visual moderno.
 
 Banco de dados local SQLite para persistência dos eventos.
 
-Este app é ideal para quem deseja gerenciar compromissos diários de maneira intuitiva e eficiente, além de servir como base para aprender a integrar Flutter com SQLite e criar apps com interface agradável e funcional.
+Notificações locais simples e eficazes, que lembram os usuários sobre seus compromissos no horário programado, funcionando tanto com o aplicativo aberto, em segundo plano ou fechado.
+
+Este app é ideal para quem deseja gerenciar compromissos diários de maneira intuitiva e eficiente, além de servir como base para aprender a integrar Flutter com SQLite, criar apps com interface agradável e adicionar notificações de forma prática.

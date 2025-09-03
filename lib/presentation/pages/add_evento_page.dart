@@ -3,6 +3,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '../../data/database/database_helper.dart';
 import '../../data/models/evento.dart';
+import '../../data/services/notification_service.dart';
 
 class AddEventoPage extends StatefulWidget {
   final DateTime? selectedDay;
@@ -52,26 +53,55 @@ class _AddEventoPageState extends State<AddEventoPage> {
         _horaSelecionada!.minute,
       );
 
+      if (dataHora.isBefore(DateTime.now())) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Selecione uma data/hora futura")),
+        );
+        return;
+      }
+
       if (widget.eventoExistente != null) {
         // Atualiza evento existente
         final atualizado = Evento(
           id: widget.eventoExistente!.id,
-          titulo: _tituloController.text,
-          descricao: _descricaoController.text,
+          titulo: _tituloController.text.trim(),
+          descricao: _descricaoController.text.trim(),
           dataHora: dataHora,
           cor: _corSelecionada.value,
         );
+
         await DatabaseHelper().updateEvento(atualizado);
+
+        // 🔄 Atualiza notificação
+        await NotificationService.atualizarNotificacao(
+          id: atualizado.id!,
+          titulo: atualizado.titulo,
+          descricao: atualizado.descricao,
+          dataHora: atualizado.dataHora,
+        );
+
         Navigator.pop(context, atualizado);
       } else {
         // Cria novo evento
         final evento = Evento(
-          titulo: _tituloController.text,
-          descricao: _descricaoController.text,
+          titulo: _tituloController.text.trim(),
+          descricao: _descricaoController.text.trim(),
           dataHora: dataHora,
           cor: _corSelecionada.value,
         );
-        await DatabaseHelper().insertEvento(evento);
+
+        // Insere no banco e obtém o ID
+        final id = await DatabaseHelper().insertEvento(evento);
+        evento.id = id;
+
+        // 🔔 Agendar notificação (mesmo app fechado)
+        await NotificationService.agendarNotificacao(
+          id: id,
+          titulo: evento.titulo,
+          descricao: evento.descricao,
+          dataHora: evento.dataHora,
+        );
+
         Navigator.pop(context, evento);
       }
     }

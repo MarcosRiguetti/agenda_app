@@ -3,6 +3,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../../data/models/evento.dart';
 import '../../data/database/database_helper.dart';
+import '../../data/services/notification_service.dart';
 import 'add_evento_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,6 +35,28 @@ class _HomePageState extends State<HomePage> {
       eventos = lista;
       _filtrarEventosDoDia(_selectedDay!);
     });
+  }
+
+  Future<void> _deletarEvento(Evento evento) async {
+    try {
+      // 🔔 Cancela a notificação associada
+      await NotificationService.cancelarNotificacao(evento.id!);
+    } catch (e, stack) {
+      debugPrint(
+        "Erro ao cancelar notificação do evento ${evento.id}: $e\n$stack",
+      );
+    }
+
+    try {
+      // 🗑️ Remove do banco
+      await DatabaseHelper().deleteEvento(evento.id!);
+    } catch (e, stack) {
+      debugPrint("Erro ao deletar evento ${evento.id} do banco: $e\n$stack");
+      return;
+    }
+
+    // 🔄 Atualiza a lista de eventos na tela
+    await _carregarEventos();
   }
 
   void _filtrarEventosDoDia(DateTime dia) {
@@ -263,9 +286,7 @@ class _HomePageState extends State<HomePage> {
                                               size: 20,
                                             ),
                                             onPressed: () async {
-                                              await DatabaseHelper()
-                                                  .deleteEvento(evento.id!);
-                                              await _carregarEventos();
+                                              _deletarEvento(evento);
                                             },
                                           ),
                                         ],

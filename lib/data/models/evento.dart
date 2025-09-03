@@ -30,4 +30,21 @@ class Evento {
     dataHora: DateTime.parse(map['dataHora']),
     cor: map['cor'],
   );
+
+  /// 🔥 Método copyWith para atualizar só alguns campos
+  Evento copyWith({
+    int? id,
+    String? titulo,
+    String? descricao,
+    DateTime? dataHora,
+    int? cor,
+  }) {
+    return Evento(
+      id: id ?? this.id,
+      titulo: titulo ?? this.titulo,
+      descricao: descricao ?? this.descricao,
+      dataHora: dataHora ?? this.dataHora,
+      cor: cor ?? this.cor,
+    );
+  }
 }
