@@ -40,6 +40,7 @@ Este app é ideal para quem deseja **gerenciar compromissos diários de maneira 
 
 - Como integrar Flutter com SQLite.  
 - Como criar interfaces modernas e responsivas.  
-- Como aplicar recursos de tema (claro/escuro).  
+- Como aplicar recursos de tema (claro/escuro). 
+- Como adicionar notificações locais confiáveis que funcionam em qualquer estado do aplicativo.
 
 
